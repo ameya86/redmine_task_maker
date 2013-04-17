@@ -1,0 +1,20 @@
+<%#
+コピー元にするパーツ。
+formタグの外に配置。
+ %>
+<div id="task_form_base" style="display: none;">
+  <p>
+    <label><%= l(:field_task_maker_task_subject) %></label>
+    <%= text_field_tag('issue[tasks][subject][]', nil, :id => nil, :style => 'width: 55%;',
+                       :onkeydown => 'if (13 == event.keyCode) { clone_task_form(true); return false; }') %>
+
+    <span style="font-weight: bold; margin-left: 16px;"><%= l(:field_task_maker_task_assignee) %></span>
+    <% if @issue.safe_attribute?('assigned_to_id') %>
+    <%= select_tag('issue[tasks][assigned_to_id][]',
+                   principals_options_for_select(@issue.assignable_users,
+                                                 @issue.assigned_to),
+                   :include_blank => true) %>
+    <% end # @issue.safe_attribute?('assigned_to_id') %>
+    <%= link_to_function('', 'remove_task_form(this);', :class => 'icon icon-del', :title => l(:button_task_maker_delete_task)) %>
+  </p>
+</div>

@@ -1,0 +1,6 @@
+ja:
+  field_task_maker_task_subject: タスク題名
+  field_task_maker_task_assignee: タスク担当者
+
+  button_task_maker_add_task: タスクを追加
+  button_task_maker_delete_task: タスクを削除

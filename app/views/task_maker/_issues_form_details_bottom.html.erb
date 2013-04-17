@@ -1,0 +1,31 @@
+<% if @issue.new_record? %>
+<div id="task_form">
+</div>
+
+<div class="splitcontentleft">
+  <p><%= link_to_function(l(:button_task_maker_add_task), 'clone_task_form(false);', :class => 'icon icon-add') %></p>
+</div>
+
+<%= javascript_tag do %>
+function clone_task_form(focus) {
+  var task_form = document.getElementById('task_form');
+  var task_base = document.getElementById('task_form_base');
+
+  var form_clone = task_base.getElementsByTagName('p')[0].cloneNode(true);
+
+  task_form.appendChild(form_clone);
+
+  if (true == focus) {
+    form_clone.getElementsByTagName('input')[0].focus();
+  }
+}
+
+function remove_task_form(target) {
+  var task_form = document.getElementById('task_form');
+
+  task_form.removeChild(target.parentNode);
+}
+
+clone_task_form(false);
+<% end # javascript_tag %>
+<% end # @issue.new_record? %>

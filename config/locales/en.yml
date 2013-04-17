@@ -1,0 +1,6 @@
+en:
+  field_task_maker_task_subject: Task Subject
+  field_task_maker_task_assignee: Task Assignee
+
+  button_task_maker_add_task: Add task
+  button_task_maker_delete_task: Remove task
